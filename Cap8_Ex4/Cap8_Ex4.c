@@ -1,6 +1,4 @@
-/*
-   Exemplo 4 do EBook pelo prof. Pedro Henrique Almeida Miranda
-*/
+
 
 #include <stdio.h>            
 #include "pico/stdlib.h"      
@@ -107,17 +105,17 @@ int main() {
 
         // Movimento do quadrado SEM depender do estado dos LEDs
         if(vrx_value < zona_desligada_min){
-            square_y += 8;
+            square_y += 8; // Move para baixo
         } else if(vrx_value > zona_desligada_max){
-            square_y -= 8;
+            square_y -= 8;  //Move para cima
         }
         if(square_y < 3) square_y = 3;
         if(square_y > HEIGHT - 15) square_y = HEIGHT - 15;
 
         if(vry_value < zona_morta_y_min){
-            square_x -= 8;
+            square_x -= 8;    // Move para esquerda
         } else if(vry_value > zona_morta_y_max){
-            square_x += 8;
+            square_x += 8;    // Move para direita
         }
         if(square_x < 3) square_x = 3;
         if(square_x > WIDTH - 15) square_x = WIDTH - 15;

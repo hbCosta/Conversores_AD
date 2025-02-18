@@ -51,6 +51,7 @@ uint pwm_init_gpio(uint gpio, uint wrap) {
 // Variável global para controlar se os LEDs estão ativos
 static volatile bool leds_habilitados = true;
 
+
 int main() {
     
     stdio_init_all();
@@ -95,7 +96,7 @@ int main() {
         uint16_t intensidade_azul = abs(vrx_value - 2047) * 2;
         uint16_t intensidade_vermelho = abs(vry_value - 2047) * 2;
 
-
+        
         cor = !cor;
         // Atualiza o conteúdo do display com animações
         ssd1306_fill(&ssd, !cor); // Limpa o display
@@ -137,36 +138,6 @@ int main() {
         }
 
     
-        /*if(leds_habilitados){
-            if(vrx_value < zona_desligada_min || vrx_value > zona_desligada_max){
-                pwm_set_gpio_level(LED_AZUL, intensidade_azul);
-                if(vrx_value < zona_desligada_min){
-                    square_y +=8;
-                }else if(vrx_value > zona_desligada_max){
-                    square_y -= 8;
-                }
-                if(square_y < 3) square_y =3;
-                if(square_y >HEIGHT-15)square_y = HEIGHT -15;
-            }else{
-                pwm_set_gpio_level(LED_AZUL, 0 );
-            }
-    
-    
-            if (vry_value >= zona_morta_y_min && vry_value <= zona_morta_y_max) {
-                pwm_set_gpio_level(LED_VERMELHO, 0);  // Mantém apagado na zona morta
-            } else {
-                pwm_set_gpio_level(LED_VERMELHO, intensidade_vermelho);
-                if(vry_value < zona_morta_y_min){
-                    square_x -=8;
-                }else if(vry_value > zona_morta_y_max){
-                    square_x +=8;
-                }
-                if(square_x < 3) square_x =3;
-                if(square_x >WIDTH-15)square_x = WIDTH-15;
-            }
-        }*/
-
-
 
         ssd1306_send_data(&ssd); // Atualiza o display
 
